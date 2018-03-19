@@ -1,10 +1,10 @@
-<html>
+<html ng-app="UniversityListApp">
     <head>
         <title>
             Universities
         </title>
     </head>
-    <body >
+    <body ng-controller="ListCtrl">
 
     <tr ng-repeat="university in universities">
         <td>{{university.name}}</td>
