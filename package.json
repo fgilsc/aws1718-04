@@ -9,5 +9,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "fragilsan, joslucroc, josnzemak",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fgilsc/aws1718-04.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fgilsc/aws1718-04/issues"
+  },
+  "homepage": "https://github.com/fgilsc/aws1718-04#readme"
 }
