@@ -8,20 +8,25 @@ var dbFileName = __dirname + "/contacts.json";
 var app = express();
 app.use(bodyParser.json());
 
-var initialContacts = [
-    { "name": "peter", "phone": 12345 },
-    { "name": "john", "phone": 6789 }
-    /*
-    
-    Direccion	Avda. Reina Mercedes, s/n
-    Localidad	Sevilla
-    CP	41012
-    Telefono	95.455.65.00/02/04
-    Fax	95.455.65.34
-    Email	malala@us.es
-    http	http://www.arquitectura.us.es/
-
-    */
+var initialCenters = [
+    { "name": "E.T.S Ingeniería Informática", 
+      "address": "Avda. Reina Mercedes, s/n",
+      "city":"Sevilla",
+      "ZipCode":41012,
+      "phone":954556816,
+      "fax":954552759,
+      "mail":"secretaria@eii.us.es",
+      "web":"http://www.informatica.us.es/" 
+    },
+    { "name": "E.T.S Arquitectura", 
+      "address": "Avda. Reina Mercedes, s/n",
+      "city":"Sevilla",
+      "ZipCode":41012,
+      "phone":954556500,
+      "fax":954556534,
+      "mail":"malala@us.es",
+      "web":"http://www.arquitectura.us.es/" 
+    }
 ];
 
 app.get("/", (req, res) => {
