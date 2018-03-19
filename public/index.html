@@ -3,12 +3,17 @@
         <title>
             Universities
         </title>
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
+        <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="university-list-app.js"></script>
+        <script type="text/javascript" src="list-ctrl.js"></script>
     </head>
     <body ng-controller="ListCtrl">
-
-    <tr ng-repeat="university in universities">
-        <td>{{university.name}}</td>
-        <td>{{university.phone}}</td>
-    </tr>
+    <table class="table">
+        <tr ng-repeat="university in universities">
+            <td>{{university.name}}</td>
+            <td>{{university.phone}}</td>
+        </tr>
+    </table>
     </body>
 </html>
