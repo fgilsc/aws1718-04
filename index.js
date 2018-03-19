@@ -85,7 +85,12 @@ app.put(BASE_API_PATH + "/universities", (req, res) => {
 });
 
 app.delete(BASE_API_PATH + "/universities", (req, res) => {
-    
+   // Remove all universities
+   console.log(Date()+" - DELETE /universities");
+
+   db.remove({});
+   
+   res.sendStatus(200); 
 });
 
 
@@ -119,10 +124,24 @@ app.get(BASE_API_PATH + "/universities/:name", (req, res) => {
 
 
 app.delete(BASE_API_PATH + "/universities/:name", (req, res) => {
-  
-});
-app.delete(BASE_API_PATH + "/universities/:name", (req, res) => {
-  
+  // Delete a single university
+  var name = req.params.name;
+  console.log(Date()+" - DELETE /universities/"+name);
+
+  db.remove({"name": name},{},(err,numRemoved)=>{
+      if(err){
+          console.error("Error accesing DB");
+          res.sendStatus(500);
+      }else{
+          if(numRemoved>1){
+              console.warn("Incosistent DB: duplicated name");
+          }else if(numRemoved == 0) {
+              res.sendStatus(404);
+          } else {
+              res.sendStatus(200);
+          }
+      }
+  });
 });
 
 app.put(BASE_API_PATH + "/universities/:name", (req, res) => {
