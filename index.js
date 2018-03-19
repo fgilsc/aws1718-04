@@ -57,7 +57,10 @@ app.get(BASE_API_PATH + "/universities", (req, res) => {
 });
 
 app.post(BASE_API_PATH + "/universities", (req, res) => {
-  
+    console.log(Date()+" - POST /universities");
+    var university = req.body;
+    db.insert(university);
+    res.sendStatus(201);
 });
 
 app.put(BASE_API_PATH + "/universities", (req, res) => {
