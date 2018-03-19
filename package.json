@@ -1,0 +1,13 @@
+{
+  "name": "taller-1",
+  "version": "1.0.0",
+  "description": "Taller #1 de la asignatura AWS",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fragilsan, joslucroc, josnzemak",
+  "license": "ISC"
+}
