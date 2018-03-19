@@ -5,6 +5,7 @@ var BASE_API_PATH = "/api/v1";
 var dbFileName = __dirname + "/contacts.json";
 
 
+
 var app = express();
 app.use(bodyParser.json());
 
@@ -29,22 +30,9 @@ var initialCenters = [
     }
 ];
 
-app.get("/", (req, res) => {
-    res.send("<html><body><h1>My server of universities</h1></body></html>");
-});
 
 app.get(BASE_API_PATH + "/universities", (req, res) => {
-   // Obtain all universities
-    console.log(Date()+" - GET /universities");
-    
-    res.send(JSON.stringify(universities));
-});
-
-app.get(BASE_API_PATH + "/universities/:name", (req, res) => {
- // Get a single contact
-    var name = req.params.name;
-    console.log(Date()+" - GET /contacts/"+name);
-
+   
 });
 
 app.post(BASE_API_PATH + "/universities", (req, res) => {
@@ -70,6 +58,11 @@ app.post(BASE_API_PATH + "/universities/:name", (req, res) => {
     res.sendStatus(405);
 });
 
+app.get(BASE_API_PATH + "/universities/:name", (req, res) => {
+ 
+});
+
+
 app.delete(BASE_API_PATH + "/universities/:name", (req, res) => {
   
 });
@@ -81,4 +74,6 @@ app.put(BASE_API_PATH + "/universities/:name", (req, res) => {
    
 });
 
-
+app.get("/", (req, res) => {
+    res.send("<html><body><h1>My server</h1></body></html>");
+});
