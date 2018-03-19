@@ -145,7 +145,29 @@ app.delete(BASE_API_PATH + "/universities/:name", (req, res) => {
 });
 
 app.put(BASE_API_PATH + "/universities/:name", (req, res) => {
-   
+    var name = req.params.name;
+    var updatedUniversity = req.body;
+    console.log(Date()+" - PUT /universities/"+name);
+    
+    if(name != updatedUniversity.name){
+        res.sendStatus(409);
+        return;
+    }
+    
+        db.update({"name": name},updatedUniversity,(err,numUpdated)=>{
+        if(err){
+            console.error("Error accesing DB");
+            res.sendStatus(500);
+        }else{
+            if(numUpdated>1){
+                console.warn("Incosistent DB: duplicated name");
+            }else if(numUpdated == 0) {
+                res.sendStatus(404);
+            } else {
+                res.sendStatus(200);
+            }
+        }
+    });
 });
 
 app.get("/", (req, res) => {
