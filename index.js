@@ -4,7 +4,6 @@ var bodyParser = require("body-parser");
 var BASE_API_PATH = "/api/v1";
 var dbFileName = __dirname + "/contacts.json";
 
-console.log("Starting server...");
 
 var app = express();
 app.use(bodyParser.json());
@@ -13,6 +12,7 @@ var initialContacts = [
     { "name": "peter", "phone": 12345 },
     { "name": "john", "phone": 6789 }
     /*
+    
     Direccion	Avda. Reina Mercedes, s/n
     Localidad	Sevilla
     CP	41012
