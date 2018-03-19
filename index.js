@@ -1,15 +1,18 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var DataStore = require("nedb");
 
 var BASE_API_PATH = "/api/v1";
-var dbFileName = __dirname + "/contacts.json";
+var dbFileName = __dirname + "/universities.json";
 
 
 
 var app = express();
 app.use(bodyParser.json());
 
-var initialCenters = [
+console.log("Starting API server...");
+var initialUniversities = [
+
     { "name": "E.T.S Ingeniería Informática", 
       "address": "Avda. Reina Mercedes, s/n",
       "city":"Sevilla",
@@ -30,9 +33,41 @@ var initialCenters = [
     }
 ];
 
+var db = new DataStore({
+    filename: dbFileName,
+    autoload: true
+});
+
+db.find({},(err,universities)=>{
+    if(err){
+        console.error("Error accesing DB");
+        process.exit(1);
+    }else{
+        if(universities.length == 0){
+            console.log("Empty DB, initializaing data...");
+            db.insert(initialUniversities);
+        }else{
+            console.log("Loaded DB with "+universities.length+" universities.");
+        }
+           
+    }
+});
 
 app.get(BASE_API_PATH + "/universities", (req, res) => {
-   
+    // Obtain all contacts
+    console.log(Date()+" - GET /universities");
+    
+    db.find({},(err,universities)=>{
+        if(err){
+            console.error("Error accesing DB");
+            res.sendStatus(500);
+        }else{
+            res.send(universities.map((university)=>{
+                delete university._id;
+                return university;
+            }));
+        }
+    });
 });
 
 app.post(BASE_API_PATH + "/universities", (req, res) => {
@@ -59,7 +94,24 @@ app.post(BASE_API_PATH + "/universities/:name", (req, res) => {
 });
 
 app.get(BASE_API_PATH + "/universities/:name", (req, res) => {
- 
+  // Get a single university
+    var name = req.params.name;
+    console.log(Date()+" - GET /universities/"+name);
+
+    db.find({"name": name},(err,universities)=>{
+        if(err){
+            console.error("Error accesing DB");
+            res.sendStatus(500);
+        }else{
+            if(universities.length>1){
+                console.warn("Incosistent DB: duplicated name");
+            }
+            res.send(universities.map((university)=>{
+                delete university._id;
+                return university;
+            })[0]);
+        }
+    });
 });
 
 
