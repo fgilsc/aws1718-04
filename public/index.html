@@ -9,10 +9,11 @@
         <script type="text/javascript" src="list-ctrl.js"></script>
     </head>
     <body ng-controller="ListCtrl">
-
-    <tr ng-repeat="university in universities">
-        <td>{{university.name}}</td>
-        <td>{{university.phone}}</td>
-    </tr>
+    <table class="table">
+        <tr ng-repeat="university in universities">
+            <td>{{university.name}}</td>
+            <td>{{university.phone}}</td>
+        </tr>
+    </table>
     </body>
 </html>
