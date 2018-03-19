@@ -4,10 +4,7 @@
   "description": "Taller #1 de la asignatura AWS",
   "main": "index.js",
   "dependencies": {
-<<<<<<< HEAD
     "body-parser": "^1.18.2",
-=======
->>>>>>> fd642864df3179516cc5e0752558823e4216bf57
     "express": "^4.16.3"
   },
   "devDependencies": {},
