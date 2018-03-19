@@ -3,14 +3,14 @@ var bodyParser = require("body-parser");
 var DataStore = require("nedb");
 
 var BASE_API_PATH = "/api/v1";
-var dbFileName = __dirname + "/contacts.json";
+var dbFileName = __dirname + "/universities.json";
 
 
 var app = express();
 app.use(bodyParser.json());
 
 console.log("Starting API server...");
-var initialCenters = [
+var initialUniversities = [
     { "name": "E.T.S Ingeniería Informática", 
       "address": "Avda. Reina Mercedes, s/n",
       "city":"Sevilla",
@@ -37,61 +37,61 @@ var db = new DataStore({
     autoload: true
 });
 
-db.find({},(err,centers)=>{
+db.find({},(err,universities)=>{
     if(err){
         console.error("Error accesing DB");
         process.exit(1);
     }else{
-        if(centers.length == 0){
+        if(universities.length == 0){
             console.log("Empty DB, initializaing data...");
-            db.insert(initialCenters);
+            db.insert(initialUniversities);
         }else{
-            console.log("Loaded DB with "+centers.length+" centers.");
+            console.log("Loaded DB with "+universities.length+" universities.");
         }
            
     }
 });
 
-app.get(BASE_API_PATH + "/centers", (req, res) => {
+app.get(BASE_API_PATH + "/universities", (req, res) => {
    
 });
 
-app.post(BASE_API_PATH + "/centers", (req, res) => {
+app.post(BASE_API_PATH + "/universities", (req, res) => {
   
 });
 
-app.put(BASE_API_PATH + "/centers", (req, res) => {
+app.put(BASE_API_PATH + "/universities", (req, res) => {
     // Forbidden
-    console.log(Date()+" - PUT /centers");
+    console.log(Date()+" - PUT /universities");
 
     res.sendStatus(405);
 });
 
-app.delete(BASE_API_PATH + "/centers", (req, res) => {
+app.delete(BASE_API_PATH + "/universities", (req, res) => {
     
 });
 
 
-app.post(BASE_API_PATH + "/centers/:name", (req, res) => {
+app.post(BASE_API_PATH + "/universities/:name", (req, res) => {
     // Forbidden
-    console.log(Date()+" - POST /centers");
+    console.log(Date()+" - POST /universities");
 
     res.sendStatus(405);
 });
 
-app.get(BASE_API_PATH + "/centers/:name", (req, res) => {
+app.get(BASE_API_PATH + "/universities/:name", (req, res) => {
  
 });
 
 
-app.delete(BASE_API_PATH + "/centers/:name", (req, res) => {
+app.delete(BASE_API_PATH + "/universities/:name", (req, res) => {
   
 });
-app.delete(BASE_API_PATH + "/centers/:name", (req, res) => {
+app.delete(BASE_API_PATH + "/universities/:name", (req, res) => {
   
 });
 
-app.put(BASE_API_PATH + "/centers/:name", (req, res) => {
+app.put(BASE_API_PATH + "/universities/:name", (req, res) => {
    
 });
 
