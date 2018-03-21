@@ -9,11 +9,23 @@
         <script type="text/javascript" src="list-ctrl.js"></script>
     </head>
     <body ng-controller="ListCtrl">
+        <form>
     <table class="table">
         <tr ng-repeat="university in universities">
             <td>{{university.name}}</td>
+            <td>{{university.address}}</td>
+            <td>{{university.city}}</td>
+            <td>{{university.ZipCode}}</td>
             <td>{{university.phone}}</td>
+            <td>{{university.fax}}</td>
+            <td>{{university.mail}}</td>
+            <td>{{university.web}}</td>
+        </tr>
+        <tr>
+            <td><input class="form-control" ng-model="newUniversity.name"></td>
+            <td><button class="btn btn-primary" ng-click="addUniversity()">Add University</button> </td>
         </tr>
     </table>
+            </form>
     </body>
 </html>

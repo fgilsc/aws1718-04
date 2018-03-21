@@ -17,7 +17,7 @@ angular
         
         $scope.addUniversity = function (){
             $http
-                .post("/api/v1/universities/:name", $scope.newUniversity)
+                .post("/api/v1/universities", $scope.newUniversity)
                 .then(function (){
                     refresh();  
                 });
