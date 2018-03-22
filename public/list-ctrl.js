@@ -36,6 +36,16 @@ angular
                 });
         };
         
+        $scope.updateUniversity = function (name){
+            $http
+                .put("/api/v1/universities/"+name, $scope.updatedUniversity)
+                .then(function (){
+                    refresh();  
+                });
+        
+            refresh();    
+        };
+        
         refresh();
         
     });
