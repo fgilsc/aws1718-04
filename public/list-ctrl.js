@@ -8,12 +8,14 @@ angular
             });
         }
         
-        function getUniversity(){
-            $http.get("/api/v1/universities/:name").then(function (response){
-                $scope.university = response.data;
-            });
+        $scope.getUniversity = function(name){
+            $http
+                .get("/api/v1/universities/"+name, name)
+                .then(function (response){
+                    $scope.universityObtained = response.data;
+                });
 
-        }
+        };
         
         $scope.addUniversity = function (){
             $http
@@ -21,7 +23,7 @@ angular
                 .then(function (){
                     refresh();  
                 });
-        }
+        };
         
         $scope.deleteUniversity = function(name){
             $http
@@ -29,8 +31,8 @@ angular
                 .then(function (){
                     refresh();
                 });
-        }
+        };
         
-        refresh();
+        //refresh();
         
     });

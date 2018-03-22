@@ -119,6 +119,7 @@ app.get(BASE_API_PATH + "/universities/:name", (req, res) => {
             }
             res.send(universities.map((university)=>{
                 delete university._id;
+                 console.log("Uni: "+university.name);
                 return university;
             })[0]);
         }
