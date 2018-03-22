@@ -23,7 +23,12 @@ angular
                 .then(function (){
                     refresh();  
                 });
+<<<<<<< HEAD
         };
+=======
+            refresh();    
+        }
+>>>>>>> 8ed6af65c02831340e1557452993bc86d3f90a41
         
         $scope.deleteUniversity = function(name){
             $http
