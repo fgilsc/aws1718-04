@@ -8,7 +8,7 @@
         <script type="text/javascript" src="university-list-app.js"></script>
         <script type="text/javascript" src="list-ctrl.js"></script>
         <script>
-            
+            //Limpia el formulario al añadir Universidad
             function resetForm() {
                 document.getElementById("addUni").reset();
             }
@@ -17,6 +17,16 @@
     <body ng-controller="ListCtrl">
         
                 <table class="table">
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td><b>Addres</b></td>
+                        <td><b>City</b></td>
+                        <td><b>Zip Code</b></td>
+                        <td><b>Phone</b></td>
+                        <td><b>Fax</b></td>
+                        <td><b>E-Mail</b></td>
+                        <td><b>Web</b></td>
+                    </tr>
                     <tr ng-repeat="university in universities">
                         <td>{{university.name}}</td>
                         <td>{{university.address}}</td>
