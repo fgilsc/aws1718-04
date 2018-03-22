@@ -41,7 +41,7 @@ angular
                 .then(function (){
                     refresh();  
                 });
-        
+    
         };
         
         $scope.deleteAllUniversities = function(){
