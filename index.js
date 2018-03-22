@@ -16,23 +16,23 @@ app.use(bodyParser.json());
 console.log("Starting API server...");
 var initialUniversities = [
 
-    { "name": "E.T.S Ingeniería Informática", 
-      "address": "Avda. Reina Mercedes, s/n",
+    { "name": "Universidad de Sevilla", 
+      "address": "C/ S. Fernando, 4",
       "city":"Sevilla",
-      "ZipCode":41012,
-      "phone":954556816,
-      "fax":954552759,
-      "mail":"secretaria@eii.us.es",
-      "web":"http://www.informatica.us.es/" 
+      "ZipCode":41004,
+      "phone":954551000,
+      "fax":954557000,
+      "mail":"serviasuntosg@us.es",
+      "web":"http://www.us.es/" 
     },
-    { "name": "E.T.S Arquitectura", 
-      "address": "Avda. Reina Mercedes, s/n",
-      "city":"Sevilla",
-      "ZipCode":41012,
-      "phone":954556500,
-      "fax":954556534,
-      "mail":"malala@us.es",
-      "web":"http://www.arquitectura.us.es/" 
+    { "name": "Universidad de Oviedo", 
+      "address": " Calle San Francisco, 1",
+      "city":"Oviedo",
+      "ZipCode":33003,
+      "phone":985103000,
+      "fax":958103933,
+      "mail":"coie@uniovi.es",
+      "web":"http://www.uniovi.es/" 
     }
 ];
 
@@ -91,7 +91,7 @@ app.delete(BASE_API_PATH + "/universities", (req, res) => {
    // Remove all universities
    console.log(Date()+" - DELETE /universities");
 
-   db.remove({});
+   db.remove({}, { multi: true });
    
    res.sendStatus(200); 
 });

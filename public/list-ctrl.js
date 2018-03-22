@@ -23,8 +23,6 @@ angular
                 .then(function (){
                     refresh();  
                 });
-        
-            refresh();    
         };
 
         
@@ -36,6 +34,7 @@ angular
                 });
         };
         
+<<<<<<< HEAD
         $scope.updateUniversity = function (name){
             $http
                 .put("/api/v1/universities/"+name, $scope.updatedUniversity)
@@ -44,6 +43,14 @@ angular
                 });
         
             refresh();    
+=======
+        $scope.deleteAllUniversities = function(){
+            $http
+                .delete("/api/v1/universities")
+                .then(function (){
+                    refresh();
+                });
+>>>>>>> 6053621f2897954f50cb975f31968cf1786a013a
         };
         
         refresh();
