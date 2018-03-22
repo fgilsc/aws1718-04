@@ -15,48 +15,7 @@
         </script>
     </head>
     <body ng-controller="ListCtrl">
-<<<<<<< HEAD
         <form>
-            
-    <table class="table">
-         
-        <tr ng-repeat="university in universities">
-            <td>{{university.name}}</td>
-            <td>{{university.address}}</td>
-            <td>{{university.city}}</td>
-            <td>{{university.ZipCode}}</td>
-            <td>{{university.phone}}</td>
-            <td>{{university.fax}}</td>
-            <td>{{university.mail}}</td>
-            <td>{{university.web}}</td>
-            <td><button class="btn btn-danger" ng-click="deleteUniversity(university.name)">Delete</button></td>
-        </tr>
-        <tr>
-            <td><input class="form-control" ng-model="newUniversity.name"></td>
-            <td><button class="btn btn-primary" ng-click="addUniversity()">Add University</button> </td>
-        </tr>
-        
-        <tr>
-            <legend>Search University</legend>
-            <td><input class="form-control" ng-model="universitySearch.name"></td>
-            <td><button class="btn btn-primary" ng-click="getUniversity(universitySearch.name)">Search University</button></td>
-            
-        </tr>
-        <tr>
-            <td>{{universityObtained.name}}</td>
-            <td>{{universityObtained.address}}</td>
-            <td>{{universityObtained.city}}</td>
-            <td>{{universityObtained.ZipCode}}</td>
-            <td>{{universityObtained.phone}}</td>
-            <td>{{universityObtained.fax}}</td>
-            <td>{{universityObtained.mail}}</td>
-            <td>{{universityObtained.web}}</td>
-            <td><button class="btn btn-danger" ng-click="deleteUniversity(universityObtained.name)">Delete</button></td>
-        </tr>
-    </table>
-            </form>
-=======
-        
                 <table class="table">
                     <tr>
                         <td><b>Name</b></td>
@@ -120,12 +79,30 @@
                     <tr>
                      <td><button onclick="resetForm()" class="btn btn-primary" ng-click="addUniversity()">Add University</button></td>
                     </tr>
-                </table>   
-                </form>
+                </table>
+                
+                <table class="table"> 
+                    <tr>
+                        <legend>Search University</legend>
+                        <td><input class="form-control" ng-model="universitySearched.name"></td>
+                        <td><button class="btn btn-primary" ng-click="getUniversity(universitySearched.name)">Search University</button></td>
+                    </tr>
+                    <tr>
+                        <td>{{universityObtained.name}}</td>
+                        <td>{{universityObtained.address}}</td>
+                        <td>{{universityObtained.city}}</td>
+                        <td>{{universityObtained.ZipCode}}</td>
+                        <td>{{universityObtained.phone}}</td>
+                        <td>{{universityObtained.fax}}</td>
+                        <td>{{universityObtained.mail}}</td>
+                        <td>{{universityObtained.web}}</td>
+                    </tr>
+                 </table>    
+                
+            </form>
                
-                  
+        
                 
             
->>>>>>> 8ed6af65c02831340e1557452993bc86d3f90a41
     </body>
 </html>
