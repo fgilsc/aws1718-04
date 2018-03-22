@@ -91,7 +91,7 @@ app.delete(BASE_API_PATH + "/universities", (req, res) => {
    // Remove all universities
    console.log(Date()+" - DELETE /universities");
 
-   db.remove({});
+   db.remove({}, { multi: true });
    
    res.sendStatus(200); 
 });

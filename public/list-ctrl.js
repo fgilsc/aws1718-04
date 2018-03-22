@@ -23,14 +23,20 @@ angular
                 .then(function (){
                     refresh();  
                 });
-        
-            refresh();    
         };
 
         
         $scope.deleteUniversity = function(name){
             $http
                 .delete("/api/v1/universities/"+name, name)
+                .then(function (){
+                    refresh();
+                });
+        };
+        
+        $scope.deleteAllUniversities = function(){
+            $http
+                .delete("/api/v1/universities")
                 .then(function (){
                     refresh();
                 });
