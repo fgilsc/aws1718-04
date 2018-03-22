@@ -21,6 +21,7 @@ angular
                 .then(function (){
                     refresh();  
                 });
+            refresh();    
         }
         
         $scope.deleteUniversity = function(name){
