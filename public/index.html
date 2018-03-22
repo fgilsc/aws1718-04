@@ -9,24 +9,67 @@
         <script type="text/javascript" src="list-ctrl.js"></script>
     </head>
     <body ng-controller="ListCtrl">
-        <form>
-    <table class="table">
-        <tr ng-repeat="university in universities">
-            <td>{{university.name}}</td>
-            <td>{{university.address}}</td>
-            <td>{{university.city}}</td>
-            <td>{{university.ZipCode}}</td>
-            <td>{{university.phone}}</td>
-            <td>{{university.fax}}</td>
-            <td>{{university.mail}}</td>
-            <td>{{university.web}}</td>
-            <td><button type="button" class="btn btn-danger" ng-click="deleteUniversity(university.name)">Delete</button></td>
-        </tr>
-        <tr>
-            <td><input class="form-control" ng-model="newUniversity.name"></td>
-            <td><button class="btn btn-primary" ng-click="addUniversity()">Add University</button> </td>
-        </tr>
-    </table>
-            </form>
+        
+                <table class="table">
+                    <tr ng-repeat="university in universities">
+                        <td>{{university.name}}</td>
+                        <td>{{university.address}}</td>
+                        <td>{{university.city}}</td>
+                        <td>{{university.ZipCode}}</td>
+                        <td>{{university.phone}}</td>
+                        <td>{{university.fax}}</td>
+                        <td>{{university.mail}}</td>
+                        <td>{{university.web}}</td>
+                        <td><button type="button" class="btn btn-danger" ng-click="deleteUniversity(university.name)">Delete</button></td>
+                    </tr>
+                </table>
+               
+                 <h2>Add University</h2>
+                 <div class="panel panel-default">
+                 <div class="panel-body">          
+               <form> 
+                 <table>
+                  <tr>    
+                    <td>Name: </td>
+                    <td><input width="48" class="form-control" ng-model="newUniversity.name"> </td>
+                  </tr>
+                  <tr>
+                   <td>Address:</td>
+                   <td><input class="form-control" ng-model="newUniversity.address"> </td>
+                  </tr> 
+                  <tr> 
+                    <td>City:</td>
+                    <td><input class="form-control" ng-model="newUniversity.city"> </td>
+                  </tr>
+                  <tr>  
+                    <td>Zip Code:</td>
+                    <td><input class="form-control" ng-model="newUniversity.ZipCode"></td>
+                  </tr>   
+                    <tr>
+                     <td>Phone:</td> 
+                     <td><input class="form-control" ng-model="newUniversity.phone"> </td>      
+                    </tr>
+                    <tr>
+                     <td>Fax:</td>
+                     <td><input class="form-control" ng-model="newUniversity.fax"> </td>
+                    </tr>
+                    <tr>
+                     <td>Mail:</td>
+                     <td><input type="email" class="form-control" ng-model="newUniversity.mail"> </td>    
+                    </tr>
+                    <tr>
+                     <td>Web:</td>
+                     <td><input type="url" class="form-control" ng-model="newUniversity.web"> </td>   
+                    </tr>
+                    <tr>
+                     <td><button class="btn btn-primary" ng-click="addUniversity()">Add University</button></td>
+                    </tr>
+                </table>   
+                </form>
+               </div>
+               </div> 
+                  
+                
+            
     </body>
 </html>
