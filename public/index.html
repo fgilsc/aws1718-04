@@ -20,6 +20,7 @@
             <td>{{university.fax}}</td>
             <td>{{university.mail}}</td>
             <td>{{university.web}}</td>
+            <td><button type="button" class="btn btn-danger" ng-click="deleteUniversity(university.name)">Delete</button></td>
         </tr>
         <tr>
             <td><input class="form-control" ng-model="newUniversity.name"></td>

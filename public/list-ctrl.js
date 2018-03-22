@@ -23,6 +23,14 @@ angular
                 });
         }
         
+        $scope.deleteUniversity = function(name){
+            $http
+                .delete("/api/v1/universities/"+name, name)
+                .then(function (){
+                    refresh();
+                });
+        }
+        
         refresh();
         
     });
