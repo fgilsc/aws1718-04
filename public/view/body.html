@@ -1,0 +1,86 @@
+
+<table class="table">
+    <tr>
+        <td><b>Name</b></td>
+        <td><b>Addres</b></td>
+        <td><b>City</b></td>
+        <td><b>Zip Code</b></td>
+        <td><b>Phone</b></td>
+        <td><b>Fax</b></td>
+        <td><b>E-Mail</b></td>
+        <td><b>Web</b></td>
+    </tr>
+    <tr ng-repeat="university in universities">
+        <td>{{university.name}}</td>
+        <td>{{university.address}}</td>
+        <td>{{university.city}}</td>
+        <td>{{university.ZipCode}}</td>
+        <td>{{university.phone}}</td>
+        <td>{{university.fax}}</td>
+        <td>{{university.mail}}</td>
+        <td>{{university.web}}</td>
+        <td><button value="submit" type="button" class="btn btn-danger" onclick="clearForm()" ng-click="deleteUniversity(university.name)">Delete</button></td>
+    </tr>
+</table>
+<button value="submit" type="button" class="btn btn-danger" onclick="clearForm()" ng-click="deleteAllUniversities()">Delete All</button></br></br>
+
+<h2>Add University</h2>
+           
+<form id="addUni"> 
+<table>
+    <tr>    
+        <td>Name: </td>
+        <td><input width="48" class="form-control" ng-model="newUniversity.name"> </td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td><input class="form-control" ng-model="newUniversity.address"> </td>
+    </tr> 
+    <tr> 
+        <td>City:</td>
+        <td><input class="form-control" ng-model="newUniversity.city"> </td>
+    </tr>
+    <tr>  
+        <td>Zip Code:</td>
+        <td><input class="form-control" ng-model="newUniversity.ZipCode"></td>
+    </tr>   
+    <tr>
+        <td>Phone:</td> 
+        <td><input class="form-control" ng-model="newUniversity.phone"> </td>      
+    </tr>
+    <tr>
+        <td>Fax:</td>
+        <td><input class="form-control" ng-model="newUniversity.fax"> </td>
+    </tr>
+    <tr>
+        <td>Mail:</td>
+        <td><input type="email" class="form-control" ng-model="newUniversity.mail"> </td>    
+    </tr>
+    <tr>
+        <td>Web:</td>
+        <td><input type="url" class="form-control" ng-model="newUniversity.web"> </td>   
+    </tr>
+    <tr>
+         <td><button onclick="resetForm()" class="btn btn-primary" ng-click="addUniversity()">Add University</button></td>
+         <td><button onclick="resetForm()" class="btn btn-primary" ng-click="updateUniversity(newUniversity.name)">Update University</button></td>
+    </tr>
+</table>
+</form>
+
+<table class="table"> 
+<tr>
+    <legend>Search University</legend>
+    <td><input class="form-control" id="university-search-selectized" ng-model="universitySearched.name"></td>
+    <td><button class="btn btn-primary" ng-click="getUniversity(universitySearched.name)">Search University</button></td>
+</tr>
+<tr>
+    <td>{{universityObtained.name}}</td>
+    <td>{{universityObtained.address}}</td>
+    <td>{{universityObtained.city}}</td>
+    <td>{{universityObtained.ZipCode}}</td>
+    <td>{{universityObtained.phone}}</td>
+    <td>{{universityObtained.fax}}</td>
+    <td>{{universityObtained.mail}}</td>
+    <td>{{universityObtained.web}}</td>
+</tr>
+</table>    
