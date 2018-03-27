@@ -1,0 +1,120 @@
+<div ng-controller="ListCtrl">
+    <br>
+    <div class="container">
+        <strong>
+            <h2>Manager</h2>
+        </strong>
+         <ul class="list-group">
+            <strong>
+                <li class="list-group-item list-group-item-danger">
+                    <div class="row">
+                        <div class="col-md-2">Nombre</div>
+                        <div class="col-md-1">Dirección</div>
+                        <div class="col-md-1">Ciudad</div>
+                        <div class="col-md-1">C. P.</div>	
+                        <div class="col-md-1">Teléfono</div>	
+                        <div class="col-md-1">Fax</div>	
+                        <div class="col-md-2">Email</div>	
+                        <div class="col-md-2">Web</div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </li>
+            </strong>
+            
+            <li  ng-repeat="university in universities" class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">{{university.name}}</div>
+                    <div class="col-md-1">{{university.address}}</div>
+                    <div class="col-md-1">{{university.city}}</div>
+                    <div class="col-md-1">{{university.ZipCode}}</div>	
+                    <div class="col-md-1">{{university.phone}}</div>	
+                    <div class="col-md-1">{{university.fax}}</div>	
+                    <div class="col-md-2">{{university.mail}}</div>	
+                    <div class="col-md-2">{{university.web}}</div>
+                    <div class="col-md-1">
+                        <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteUniversity(university.name)">
+                            Delete
+                        </button></div>	
+                </div>
+            </li>
+        </ul>
+        <br>
+        <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteAllUniversities()">Delete All</button></br></br>
+    </div>
+    
+    
+    
+    
+    
+     <div class="container">
+        <ul class="list-group">
+            <strong>
+                <h2>Search University</h2>
+                <div class="row">
+                    <div class="col-md-6"><input class="form-control" ng-model="universitySearched.name"></div>
+                    <div class="col-md-6"><button class="btn btn-primary" ng-click="getUniversity(universitySearched.name)">Search University</button></div>
+                </div>
+            </strong>
+            <br>
+            <li class="list-group-item borderless" style="border: none">
+                <div class="row" >
+                    <div class="col-md-3">{{universityObtained.name}}</div>
+                    <div class="col-md-1">{{universityObtained.address}}</div>
+                    <div class="col-md-1">{{universityObtained.city}}</div>
+                    <div class="col-md-1">{{universityObtained.ZipCode}}</div>	
+                    <div class="col-md-1">{{universityObtained.phone}}</div>	
+                    <div class="col-md-1">{{universityObtained.fax}}</div>	
+                    <div class="col-md-2">{{universityObtained.mail}}</div>	
+                    <div class="col-md-2">{{universityObtained.web}}</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    
+    
+    
+    <div class="container">
+        <strong>
+            <h2>Add/Update University</h2>
+        </strong>
+        
+        <div class="form-group col-md-4" id="addUni">
+          <label for="uni">Name:</label>
+          <input type="text" class="form-control" id="uni" ng-model="newUniversity.name"> 
+          
+          <label for="addr">Address:</label>
+          <input type="text" class="form-control" id="addr" ng-model="newUniversity.address">
+          
+          <label for="city">City:</label>
+          <input type="text" class="form-control" id="city" ng-model="newUniversity.city"> 
+          
+          <label for="zc">Zip Code:</label>
+          <input type="text" class="form-control" id="zc" ng-model="newUniversity.ZipCode">
+          
+          <label for="phone">Phone:</label>
+          <input type="text" class="form-control" id="phone" ng-model="newUniversity.phone">
+          
+          <label for="fax">Fax:</label>
+          <input type="text" class="form-control" id="fax" ng-model="newUniversity.fax">
+          
+          <label for="mail">Mail:</label>
+          <input type="email" class="form-control" id="mail" ng-model="newUniversity.mail">
+          
+          <label for="web">Web:</label>
+          <input type="url" class="form-control" id="web" ng-model="newUniversity.web">
+          
+          <br>
+          <div class="row" >
+              <div class="col-md-6">
+                  <button onclick="resetForm()" class="btn btn-primary" ng-click="addUniversity()">Add University</button>
+              </div>
+              <div class="col-md-6">
+                  <button onclick="resetForm()" class="btn btn-primary" ng-click="updateUniversity(newUniversity.name)">Update University</button>
+              </div>
+          </div>
+        </div>
+    </div>
+    
+    
+</div>

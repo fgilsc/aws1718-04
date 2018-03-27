@@ -37,11 +37,11 @@ angular
 
         $scope.updateUniversity = function (name){
             $http
-                .put("/api/v1/universities/"+name, $scope.updatedUniversity)
+                .put("/api/v1/universities/"+name, $scope.newUniversity)
                 .then(function (){
                     refresh();  
                 });
-        
+    
         };
         
         $scope.deleteAllUniversities = function(){

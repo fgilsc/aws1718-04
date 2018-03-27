@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var DataStore = require("nedb");
@@ -24,6 +26,15 @@ var initialUniversities = [
       "fax":954557000,
       "mail":"serviasuntosg@us.es",
       "web":"http://www.us.es/" 
+    },
+    { "name": "Universidad de Salamanca", 
+      "address": " Patio de Escuelas, 1",
+      "city":"Salamanca",
+      "ZipCode":37008,
+      "phone": 923294500,
+      "fax":923294400,
+      "mail":"pas@usal.es",
+      "web":"http://pas.usal.es/" 
     },
     { "name": "Universidad de Oviedo", 
       "address": " Calle San Francisco, 1",
