@@ -27,6 +27,15 @@ var initialUniversities = [
       "mail":"serviasuntosg@us.es",
       "web":"http://www.us.es/" 
     },
+    { "name": "Universidad de Salamanca", 
+      "address": " Patio de Escuelas, 1",
+      "city":"Salamanca",
+      "ZipCode":37008,
+      "phone": 923294500,
+      "fax":923294400,
+      "mail":"pas@usal.es",
+      "web":"http://pas.usal.es/" 
+    },
     { "name": "Universidad de Oviedo", 
       "address": " Calle San Francisco, 1",
       "city":"Oviedo",
