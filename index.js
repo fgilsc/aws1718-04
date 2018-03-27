@@ -27,14 +27,14 @@ var initialUniversities = [
       "mail":"serviasuntosg@us.es",
       "web":"http://www.us.es/" 
     },
-    { "name": "Universidad de Salamanca", 
-      "address": " Patio de Escuelas, 1",
-      "city":"Salamanca",
-      "ZipCode":37008,
+    { "name": "Universidad Complutense de Madrid", 
+      "address": "Avda. de Séneca, 2 Ciudad Universitaria",
+      "city":"Madrid",
+      "ZipCode":28040,
       "phone": 923294500,
-      "fax":923294400,
-      "mail":"pas@usal.es",
-      "web":"http://pas.usal.es/" 
+      "fax":914520400,
+      "mail":"infocom@ucm.es",
+      "web":"https://www.ucm.es/"
     },
     { "name": "Universidad de Oviedo", 
       "address": " Calle San Francisco, 1",
