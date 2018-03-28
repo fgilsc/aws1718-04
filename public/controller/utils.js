@@ -3,3 +3,7 @@ function resetForm() {
     document.getElementById("addUni").reset();
     document.getElementById("updateUni").reset();
 }
+
+/*function fillForUpdate(){
+    console.log("hello");
+}*/

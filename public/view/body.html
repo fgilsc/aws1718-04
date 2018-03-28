@@ -32,9 +32,13 @@
                     <div class="col-md-2">{{university.mail}}</div>	
                     <div class="col-md-2">{{university.web}}</div>
                     <div class="col-md-1">
-                        <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteUniversity(university.name)">
+                        <!--<button class="btn btn-info" style="margin-bottom:5px;" ng-click="getUniversity(universitySearched.name)">
+                             Update
+                        </button>-->
+                        <button class="btn btn-danger" onclick="clearForm()" ng-click="deleteUniversity(university.name)">
                             Delete
-                        </button></div>	
+                        </button>
+                    </div>	
                 </div>
             </li>
         </ul>
@@ -81,16 +85,16 @@
         
         <form class="form-group col-md-4" id="addUni" name="universityForm">
           <label for="uni">Name:</label>
-          <input type="text" class="form-control" id="uni" ng-model="newUniversity.name" ng-class="{'is-invalid': !newUniversity.name.length}"> 
+          <input type="text" class="form-control" id="uni" name="uni" ng-model="newUniversity.name" ng-class="{'is-invalid': !universityForm.uni.$valid}" required/> 
           
           <label for="addr">Address:</label>
-          <input type="text" class="form-control" id="addr" ng-model="newUniversity.address">
+          <input type="text" class="form-control" id="addr" name="addr" ng-model="newUniversity.address" ng-class="{'is-invalid': !universityForm.addr.$valid}" required>
           
           <label for="city">City:</label>
-          <input type="text" class="form-control" id="city" ng-model="newUniversity.city"> 
+          <input type="text" class="form-control" id="city" name="city" ng-model="newUniversity.city" ng-class="{'is-invalid': !universityForm.city.$valid}" required> 
           
           <label for="zc">Zip Code:</label>
-          <input type="text" class="form-control" id="zc" name="zipcode" ng-model="newUniversity.ZipCode" ng-class="{'is-invalid': !universityForm.zipcode.$valid}" required ng-pattern="/^[0-9]+$/">
+          <input type="text" class="form-control" id="zc" name="zipcode" ng-model="newUniversity.zipcode" ng-class="{'is-invalid': !universityForm.zipcode.$valid}" required ng-pattern="/^[0-9]+$/">
           
           <label for="phone">Phone:</label>
           <input type="text" class="form-control" id="phone" name="phone" ng-model="newUniversity.phone" ng-class="{'is-invalid': !universityForm.phone.$valid}" required ng-pattern="/^[0-9]+$/">
@@ -99,10 +103,10 @@
           <input type="text" class="form-control" id="fax" name="fax" ng-model="newUniversity.fax" ng-class="{'is-invalid': !universityForm.fax.$valid}" required ng-pattern="/^[0-9]+$/">
           
           <label for="mail">Mail:</label>
-          <input type="email" class="form-control" id="mail" name="mail" ng-model="newUniversity.mail" ng-class="{'is-invalid': !universityForm.mail.$valid}">
+          <input type="email" class="form-control" id="mail" name="mail" ng-model="newUniversity.mail" ng-class="{'is-invalid': !universityForm.mail.$valid}" required>
           
           <label for="web">Web:</label>
-          <input type="url" class="form-control" id="web" name="web" ng-model="newUniversity.web" ng-class="{'is-invalid': !universityForm.web.$valid}">
+          <input type="url" class="form-control" id="web" name="web" ng-model="newUniversity.web" ng-class="{'is-invalid': !universityForm.web.$valid}" required>
           
           <br>
           <div class="row" >
