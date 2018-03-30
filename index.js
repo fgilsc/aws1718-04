@@ -5,15 +5,31 @@ var bodyParser = require("body-parser");
 var DataStore = require("nedb");
 var path = require('path');
 
+ 
 
+ 
 var BASE_API_PATH = "/api/v1";
 var dbFileName = __dirname + "/universities.json";
 
 var port = (process.env.PORT || 16778);
 
 var app = express();
+app.use(require('apikey')(auth, 'realm'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
+
+
+
+function auth (key, fn) {
+    var a =key.name;
+    var b = key.auth;
+  if ('test' === key)
+    fn(null, { id: '1', name: 'Administrator'})
+  else
+    fn(null, null)
+}
+ 
+
 
 console.log("Starting API server...");
 var initialUniversities = [
