@@ -10,23 +10,34 @@ var path = require('path');
  
 var BASE_API_PATH = "/api/v1";
 var dbFileName = __dirname + "/universities.json";
+var dbFileNameUser = __dirname + "/users.json";
 
 var port = (process.env.PORT || 16778);
 
 var app = express();
-app.use(require('apikey')(auth, 'realm'));
+app.use(require('apikey')(auth, 'my realm'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
 
 
 function auth (key, fn) {
-    var a =key.name;
-    var b = key.auth;
-  if ('test' === key)
-    fn(null, { id: '1', name: 'Administrator'})
-  else
-    fn(null, null)
+
+ 
+    dbuser.find({"apikey": key},(err,users)=>{
+        if(err){
+            console.error("Error accesing DB");
+        }else{
+            if(users.length  == 1){
+                console.log("Usuario con "+ key+ " encontrado");
+                fn(null, { id: '1', name: 'Administrator'})
+
+            }else{
+                console.log("clave "+ key+ " erronea");
+                fn(null, null)
+            }
+        }
+    });
 }
  
 
@@ -71,6 +82,33 @@ db.find({},(err,universities)=>{
             console.log("Loaded DB with "+universities.length+" universities.");
         }
            
+    }
+});
+
+var initialUser = [
+
+    { "name": "admin", 
+      "pass": "admin",
+      "apikey":"123456"
+    }
+];
+
+var dbuser = new DataStore({
+    filename: dbFileNameUser,
+    autoload: true
+});
+
+dbuser.find({},(err,users)=>{
+    if(err){
+        console.error("Error accesing DB");
+        process.exit(1);
+    }else{
+        if(users.length == 0){
+            console.log("Empty DB, initializaing data...");
+            dbuser.insert(initialUser);
+        }else{
+            console.log("Loaded user DB with "+users.length+" users.");
+        }
     }
 });
 
