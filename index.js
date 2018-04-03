@@ -25,11 +25,11 @@ function auth (key, fn) {
         }else{
             if(users.length  == 1){
                 console.log("Usuario con "+ key+ " encontrado");
-                fn(null, { id: '1', name: 'Administrator'})
+                fn(null, { id: '1', name: 'Administrator'});
 
             }else{
                 console.log("clave "+ key+ " erronea");
-                fn(null, null)
+                fn(null, null);
             }
         }
     });
