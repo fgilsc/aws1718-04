@@ -6,8 +6,6 @@ var DataStore = require("nedb");
 var path = require('path');
 
  
-
- 
 var BASE_API_PATH = "/api/v1";
 var dbFileName = __dirname + "/universities.json";
 var dbFileNameUser = __dirname + "/users.json";
@@ -19,11 +17,8 @@ app.use(require('apikey')(auth, 'my realm'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
-
-
 function auth (key, fn) {
 
- 
     dbuser.find({"apikey": key},(err,users)=>{
         if(err){
             console.error("Error accesing DB");
@@ -39,8 +34,6 @@ function auth (key, fn) {
         }
     });
 }
- 
-
 
 console.log("Starting API server...");
 var initialUniversities = [
@@ -89,7 +82,7 @@ var initialUser = [
 
     { "name": "admin", 
       "pass": "admin",
-      "apikey":"123456"
+      "apikey":"1234"
     }
 ];
 
@@ -234,7 +227,7 @@ app.put(BASE_API_PATH + "/universities/:name", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    res.send("<html><body><h1>My server</h1></body></html>");
+    res.send("<html><body><h1>My server of Universities</h1></body></html>");
 });
 
 app.listen(port, () => {
