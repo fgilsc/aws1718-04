@@ -14,3 +14,9 @@ function ScrollToAddUniversity(){
         'slow');
 }
 
+function ScrollToSearchUniversity(){
+    $('html,body').animate({
+        scrollTop: $(".searchUniversity").offset().top},
+        'slow');
+}
+

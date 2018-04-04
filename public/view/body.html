@@ -4,13 +4,14 @@
         <strong>
             <h2>Manager</h2><hr>
         </strong>
-        <button class="btn btn-primary addNewUniversity" onclick="ScrollToAddUniversity()">Add/Update University</button>
+        <button class="btn btn-primary" onclick="ScrollToAddUniversity()">Add/Update University</button>
+        <button class="btn btn-secondary" onclick="ScrollToSearchUniversity()">Search University</button>
         <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteAllUniversities()">Delete All</button></br></br>
         
         <div >
          <ul class="list-group" ng-repeat="university in universities">
             <strong>
-                <li class="list-group-item list-group-item-danger">{{university.name}}</li>
+                <li class="list-group-item list-group-item-info">{{university.name}}</li>
             </strong>
             <li class="list-group-item">{{university.address}}</li>
             <li class="list-group-item">{{university.city}}</li>
@@ -31,30 +32,31 @@
     
     
     
-     <div class="container">
+     <div class="container searchUniversity">
         <ul class="list-group">
             <strong>
                 <h2>Search University</h2><hr>
                 <div class="row">
                     <div class="col-md-6"><input class="form-control" ng-model="universitySearched.name"></div>
-                    <div class="col-md-6"><button class="btn btn-primary" ng-click="getUniversity(universitySearched.name)">Search University</button></div>
+                    <div class="col-md-6"><button class="btn btn-secondary" ng-click="getUniversity(universitySearched.name)">Search University</button></div>
                 </div>
             </strong>
             <br>
             
-            <li class="list-group-item borderless" style="border: none">
-                <div class="row" >
-                    <div class="col-md-3">{{universityObtained.name}}</div>
-                    <div class="col-md-1">{{universityObtained.address}}</div>
-                    <div class="col-md-1">{{universityObtained.city}}</div>
-                    <div class="col-md-1">{{universityObtained.ZipCode}}</div>	
-                    <div class="col-md-1">{{universityObtained.phone}}</div>	
-                    <div class="col-md-1">{{universityObtained.fax}}</div>	
-                    <div class="col-md-2">{{universityObtained.mail}}</div>	
-                    <div class="col-md-2">{{universityObtained.web}}</div>
-                </div>
-            </li>
+             <ul class="list-group">
+            <strong>
+                <li class="list-group-item list-group-item-light" style="border: none">{{universityObtained.name}}</li>
+            </strong>
+            <li class="list-group-item" style="border: none">{{universityObtained.address}}</li>
+            <li class="list-group-item" style="border: none">{{universityObtained.city}}</li>
+            <li class="list-group-item" style="border: none">{{universityObtained.ZipCode}}</li>
+            <li class="list-group-item" style="border: none">{{universityObtained.phone}}</li>
+            <li class="list-group-item" style="border: none">{{universityObtained.fax}}</li>
+            <li class="list-group-item" style="border: none">{{universityObtained.mail}}</li>
+            <li class="list-group-item" style="border: none">{{universityObtained.web}}</li>
+            <br>
         </ul>
+          
     </div>
    
     
