@@ -4,6 +4,8 @@
         <strong>
             <h2>Manager</h2>
         </strong>
+        <button class="btn btn-primary addNewUniversity">Add new University</button>
+        <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteAllUniversities()">Delete All</button></br></br>
         
         <div >
          <ul class="list-group" ng-repeat="university in universities">
@@ -22,9 +24,8 @@
             </button>
             <br>
         </ul>
-           
-        <br>
-        <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteAllUniversities()">Delete All</button></br></br>
+          
+        
     </div>
     
     
@@ -58,7 +59,7 @@
     
     
     
-    <div class="container">
+    <div class="container addModificate">
         <strong>
             <h2>Add/Update University</h2>
         </strong>

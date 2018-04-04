@@ -7,3 +7,9 @@ function resetForm() {
 /*function fillForUpdate(){
     console.log("hello");
 }*/
+
+$(".addNewUniversity").click(function() {
+    $('html,body').animate({
+        scrollTop: $(".addModificate").offset().top},
+        'slow');
+});
