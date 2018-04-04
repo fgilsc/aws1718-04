@@ -4,48 +4,28 @@
         <strong>
             <h2>Manager</h2>
         </strong>
-         <ul class="list-group">
+        
+        <div >
+         <ul class="list-group" ng-repeat="university in universities">
             <strong>
-                <li class="list-group-item list-group-item-danger">
-                    <div class="row">
-                        <div class="col-md-2">Nombre</div>
-                        <div class="col-md-1">Dirección</div>
-                        <div class="col-md-1">Ciudad</div>
-                        <div class="col-md-1">C. P.</div>	
-                        <div class="col-md-1">Teléfono</div>	
-                        <div class="col-md-1">Fax</div>	
-                        <div class="col-md-2">Email</div>	
-                        <div class="col-md-2">Web</div>
-                        <div class="col-md-1"></div>
-                    </div>
-                </li>
+                <li class="list-group-item list-group-item-danger">{{university.name}}</li>
             </strong>
-            
-            <li  ng-repeat="university in universities" class="list-group-item">
-                <div class="row">
-                    <div class="col-md-2">{{university.name}}</div>
-                    <div class="col-md-1">{{university.address}}</div>
-                    <div class="col-md-1">{{university.city}}</div>
-                    <div class="col-md-1">{{university.ZipCode}}</div>	
-                    <div class="col-md-1">{{university.phone}}</div>	
-                    <div class="col-md-1">{{university.fax}}</div>	
-                    <div class="col-md-2">{{university.mail}}</div>	
-                    <div class="col-md-2">{{university.web}}</div>
-                    <div class="col-md-1">
-                        <!--<button class="btn btn-info" style="margin-bottom:5px;" ng-click="getUniversity(universitySearched.name)">
-                             Update
-                        </button>-->
-                        <button class="btn btn-danger" onclick="clearForm()" ng-click="deleteUniversity(university.name)">
-                            Delete
-                        </button>
-                    </div>	
-                </div>
-            </li>
+            <li class="list-group-item">{{university.address}}</li>
+            <li class="list-group-item">{{university.city}}</li>
+            <li class="list-group-item">{{university.ZipCode}}</li>
+            <li class="list-group-item">{{university.phone}}</li>
+            <li class="list-group-item">{{university.fax}}</li>
+            <li class="list-group-item">{{university.mail}}</li>
+            <li class="list-group-item">{{university.web}}</li>
+            <button class="btn btn-danger" onclick="clearForm()" ng-click="deleteUniversity(university.name)">
+                    Delete
+            </button>
+            <br>
         </ul>
+           
         <br>
         <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteAllUniversities()">Delete All</button></br></br>
     </div>
-    
     
     
     
