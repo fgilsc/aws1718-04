@@ -8,8 +8,9 @@ function resetForm() {
     console.log("hello");
 }*/
 
-$(".addNewUniversity").click(function() {
+function ScrollToAddUniversity(){
     $('html,body').animate({
         scrollTop: $(".addModificate").offset().top},
         'slow');
-});
+}
+
