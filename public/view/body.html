@@ -38,7 +38,7 @@
                 <h2>Search University</h2><hr>
                 <div class="row">
                     <div class="col-md-6"><input class="form-control" ng-model="universitySearched.name"></div>
-                    <div class="col-md-6"><button class="btn btn-secondary" ng-click="getUniversity(universitySearched.name)">Search University</button></div>
+                    <div class="col-md-6"><button class="btn btn-secondary" ng-click="getUniversity(universitySearched.name)" >Search University</button></div>
                 </div>
             </strong>
             <br>
@@ -68,9 +68,20 @@
             <h2>Add/Update University</h2><hr>
         </strong>
         
-        <form class="form-group col-md-4" id="addUni" name="universityForm">
+        <div class="row">
+            <div class="col-md-6">
+              <select class="form-control" ng-model="universityDataSelected" ng-change="getUniversityData(universityDataSelected.name)"
+                    data-ng-options="university as university.name for university in universities">
+                  <option value="university"  >{{university.name}}</option>
+              </select>    
+            </div>
+        </div>
+        
+        <form class="form-group col-md-4" id="addUni" name="universityForm" >
+          
+        
           <label for="uni">Name:</label>
-          <input type="text" class="form-control" id="uni" name="uni" ng-model="newUniversity.name" ng-class="{'is-invalid': !universityForm.uni.$valid}" required/> 
+          <input type="text" class="form-control" id="uni" name="uni" ng-value="{{newUniversity.name}}" ng-model="newUniversity.name" ng-class="{'is-invalid': !universityForm.uni.$valid}" required/>
           
           <label for="addr">Address:</label>
           <input type="text" class="form-control" id="addr" name="addr" ng-model="newUniversity.address" ng-class="{'is-invalid': !universityForm.addr.$valid}" required>
@@ -79,7 +90,7 @@
           <input type="text" class="form-control" id="city" name="city" ng-model="newUniversity.city" ng-class="{'is-invalid': !universityForm.city.$valid}" required> 
           
           <label for="zc">Zip Code:</label>
-          <input type="text" class="form-control" id="zc" name="zipcode" ng-model="newUniversity.zipcode" ng-class="{'is-invalid': !universityForm.zipcode.$valid}" required ng-pattern="/^[0-9]+$/">
+          <input type="text" class="form-control" id="zc" name="zipcode" ng-model="newUniversity.ZipCode" ng-class="{'is-invalid': !universityForm.zipcode.$valid}" required ng-pattern="/^[0-9]+$/">
           
           <label for="phone">Phone:</label>
           <input type="text" class="form-control" id="phone" name="phone" ng-model="newUniversity.phone" ng-class="{'is-invalid': !universityForm.phone.$valid}" required ng-pattern="/^[0-9]+$/">

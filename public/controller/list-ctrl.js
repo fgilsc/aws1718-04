@@ -53,6 +53,15 @@ angular
 
         };
         
+        $scope.getUniversityData = function(name){
+            $http
+                .get("/api/v1/universities/"+name, name)
+                .then(function (response){
+                    $scope.newUniversity = response.data;
+                });
+
+        };
+        
         refresh();
         
     });

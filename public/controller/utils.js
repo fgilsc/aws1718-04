@@ -19,4 +19,3 @@ function ScrollToSearchUniversity(){
         scrollTop: $(".searchUniversity").offset().top},
         'slow');
 }
-
