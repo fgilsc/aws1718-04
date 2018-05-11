@@ -3,7 +3,7 @@
 var MongoClient = require('mongodb').MongoClient;
 var db;
 
-var Universities = function () {};
+var Universities = function () {}; 
 
 Universities.prototype.connectDb = function(callback){
     MongoClient.connect(process.env.MONGODB_URL, function(err, database) {
