@@ -1,19 +1,27 @@
 'use strict';
 
-var path = require('path');
-var DataStore = require('nedb');
-var dbFileName = path.join(__dirname, 'universities.json');
+var MongoClient = require('mongodb').MongoClient;
+var db;
 
-var db = new DataStore({
-    filename : dbFileName,
-    autoload : true
-});
+var Universities = function () {}; 
+
+Universities.prototype.connectDb = function(callback){
+    MongoClient.connect(process.env.MONGODB_URL, function(err, database) {
+        if(err) {
+            callback(err);
+        }
+        
+        db = database.db('aws1718-04').collection('universities');
+        
+        callback(err, db);
+    });
+};
 
 
-var Universities = function () {};
+
 
 Universities.prototype.allUniversities = function(callback){
-    return db.find({},callback);
+    return db.find({}).toArray(callback);
 };
 
 Universities.prototype.add = function(university,callback){
@@ -25,7 +33,7 @@ Universities.prototype.removeAll = function(callback){
 };
 
 Universities.prototype.get = function(name,callback){
-    return db.find({name:name},callback);
+    return db.find({name:name}).toArray(callback);
 };
 
 Universities.prototype.remove = function(name,callback){
@@ -37,3 +45,4 @@ Universities.prototype.update = function(name, updatedUniversity,callback){
 };
 
 module.exports = new Universities();
+
