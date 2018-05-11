@@ -9,6 +9,7 @@ var db = new DataStore({
     autoload : true
 });
 
+
 var Universities = function () {};
 
 Universities.prototype.allUniversities = function(callback){
