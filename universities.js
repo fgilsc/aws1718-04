@@ -11,7 +11,7 @@ Universities.prototype.connectDb = function(callback){
             callback(err);
         }
         
-        db = database.db('aws').collection('universities');
+        db = database.db('aws1718-04').collection('universities');
         
         callback(err, db);
     });
