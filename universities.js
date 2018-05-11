@@ -17,9 +17,6 @@ Universities.prototype.connectDb = function(callback){
     });
 };
 
-
-
-
 Universities.prototype.allUniversities = function(callback){
     return db.find({}).toArray(callback);
 };
