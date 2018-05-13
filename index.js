@@ -5,12 +5,15 @@ var bodyParser = require("body-parser");
 var path = require('path');
 var universities = require("./universities.js");
 var BASE_API_PATH = "/api/v1";
+var cors= require("cors");
 
 
 var port = (process.env.PORT || 16778);
 
 var app = express();
 
+
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
