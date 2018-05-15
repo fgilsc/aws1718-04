@@ -117,6 +117,20 @@ universities.connectDb((err) => {
         process.exit(1);
     }
 
+
+app.get(baseAPI + "/researchers", (req, response) => {
+    console.log("GET /researchers"); 
+    
+    request.get(researchersResource("/researchers"), (error, resp, body) => {
+        if (error) {
+            console.log('error:'+error);
+            response.sendStatus(500);
+        } else {
+            response.send(body);
+        }
+    });
+});
+
     app.listen(port, () => {
         console.log("Server with GUI up and running!!");
     });    
