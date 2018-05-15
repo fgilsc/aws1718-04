@@ -6,6 +6,8 @@ var path = require('path');
 var universities = require("./universities.js");
 var BASE_API_PATH = "/api/v1";
 var cors= require("cors");
+var request = require('request').defaults({json: true});
+var researchersResource = require('./researchersResource.js');
 
 
 var port = (process.env.PORT || 16778);
