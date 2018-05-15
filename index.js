@@ -118,7 +118,7 @@ universities.connectDb((err) => {
     }
 
 
-app.get(baseAPI + "/researchers", (req, response) => {
+app.get(BASE_API_PATH + "/researchers", (req, response) => {
     console.log("GET /researchers"); 
     
     request.get(researchersResource("/researchers"), (error, resp, body) => {
