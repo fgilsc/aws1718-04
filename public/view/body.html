@@ -1,120 +1,100 @@
 <div ng-controller="ListCtrl">
     <br>
     <div class="container">
-        <strong>
-            <h2>Manager</h2><hr>
-        </strong>
-        <button class="btn btn-primary" onclick="ScrollToAddUniversity()">Add/Update University</button>
-        <button class="btn btn-secondary" onclick="ScrollToSearchUniversity()">Search University</button>
-        <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteAllUniversities()">Delete All</button></br></br>
-        
-        <div >
-         <ul class="list-group" ng-repeat="university in universities">
+        <div class="jumbotron">
             <strong>
-                <li class="list-group-item list-group-item-info">{{university.name}}</li>
+                <h2>Searcher</h2><hr>
             </strong>
-            <li class="list-group-item">{{university.address}}</li>
-            <li class="list-group-item">{{university.city}}</li>
-            <li class="list-group-item">{{university.ZipCode}}</li>
-            <li class="list-group-item">{{university.phone}}</li>
-            <li class="list-group-item">{{university.fax}}</li>
-            <li class="list-group-item">{{university.mail}}</li>
-            <li class="list-group-item">{{university.web}}</li>
-            <button class="btn btn-danger" onclick="clearForm()" ng-click="deleteUniversity(university.name)">
-                    Delete
-            </button>
-            <br>
-        </ul>
-          
-        
-    </div>
-    
-    
-    
-    
-     <div class="container searchUniversity">
-        <ul class="list-group">
-            <strong>
-                <h2>Search University</h2><hr>
-                <div class="row">
-                    <div class="col-md-6"><input class="form-control" ng-model="universitySearched.name"></div>
-                    <div class="col-md-6"><button class="btn btn-secondary" ng-click="getUniversity(universitySearched.name)" >Search University</button></div>
-                </div>
-            </strong>
-            <br>
-            
-             <ul class="list-group">
-            <strong>
-                <li class="list-group-item list-group-item-light" style="border: none">{{universityObtained.name}}</li>
-            </strong>
-            <li class="list-group-item" style="border: none">{{universityObtained.address}}</li>
-            <li class="list-group-item" style="border: none">{{universityObtained.city}}</li>
-            <li class="list-group-item" style="border: none">{{universityObtained.ZipCode}}</li>
-            <li class="list-group-item" style="border: none">{{universityObtained.phone}}</li>
-            <li class="list-group-item" style="border: none">{{universityObtained.fax}}</li>
-            <li class="list-group-item" style="border: none">{{universityObtained.mail}}</li>
-            <li class="list-group-item" style="border: none">{{universityObtained.web}}</li>
-            <br>
-        </ul>
-          
-    </div>
-   
-    
-    
-    
-    
-    <div class="container addModificate">
-        <strong>
-            <h2>Add/Update University</h2><hr>
-        </strong>
-        
-        <div class="row">
-            <div class="col-md-6">
-              <select class="form-control" ng-model="universityDataSelected" ng-change="getUniversityData(universityDataSelected.name)"
-                    data-ng-options="university as university.name for university in universities">
-                  <option value="university"  >{{university.name}}</option>
-              </select>    
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#researchersModal">Researchers</button>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#groupsModal">Groups</button>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#universitiesModal">Universities</button>
             </div>
+          <hr>
         </div>
         
-        <form class="form-group col-md-4" id="addUni" name="universityForm" >
-          
-        
-          <label for="uni">Name:</label>
-          <input type="text" class="form-control" id="uni" name="uni" ng-value="{{newUniversity.name}}" ng-model="newUniversity.name" ng-class="{'is-invalid': !universityForm.uni.$valid}" required/>
-          
-          <label for="addr">Address:</label>
-          <input type="text" class="form-control" id="addr" name="addr" ng-model="newUniversity.address" ng-class="{'is-invalid': !universityForm.addr.$valid}" required>
-          
-          <label for="city">City:</label>
-          <input type="text" class="form-control" id="city" name="city" ng-model="newUniversity.city" ng-class="{'is-invalid': !universityForm.city.$valid}" required> 
-          
-          <label for="zc">Zip Code:</label>
-          <input type="text" class="form-control" id="zc" name="zipcode" ng-model="newUniversity.ZipCode" ng-class="{'is-invalid': !universityForm.zipcode.$valid}" required ng-pattern="/^[0-9]+$/">
-          
-          <label for="phone">Phone:</label>
-          <input type="text" class="form-control" id="phone" name="phone" ng-model="newUniversity.phone" ng-class="{'is-invalid': !universityForm.phone.$valid}" required ng-pattern="/^[0-9]+$/">
-          
-          <label for="fax">Fax:</label>
-          <input type="text" class="form-control" id="fax" name="fax" ng-model="newUniversity.fax" ng-class="{'is-invalid': !universityForm.fax.$valid}" required ng-pattern="/^[0-9]+$/">
-          
-          <label for="mail">Mail:</label>
-          <input type="email" class="form-control" id="mail" name="mail" ng-model="newUniversity.mail" ng-class="{'is-invalid': !universityForm.mail.$valid}" required>
-          
-          <label for="web">Web:</label>
-          <input type="url" class="form-control" id="web" name="web" ng-model="newUniversity.web" ng-class="{'is-invalid': !universityForm.web.$valid}" required>
-          
-          <br>
-          <div class="row" >
-              <div class="col-md-6">
-                  <button onclick="resetForm()" class="btn btn-primary" ng-disabled="!universityForm.$valid" ng-click="addUniversity()">Add University</button>
-              </div>
-              <div class="col-md-6">
-                  <button onclick="resetForm()" class="btn btn-primary" ng-disabled="!universityForm.$valid" ng-click="updateUniversity(newUniversity.name)">Update University</button>
-              </div>
-          </div>
-        </form>
+        <div class="jumbotron">
+            
+                <strong>
+                    <h2>Manager</h2><hr>
+                </strong>
+                <button class="btn btn-secondary" onclick="ScrollToAddUniversity()">Add/Update University</button>
+                <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteAllUniversities()">Delete All</button></br></br>
+                
+                <div >
+                 <ul class="list-group" ng-repeat="university in universities">
+                    <strong>
+                        <li class="list-group-item list-group-item-dark">{{university.name}}</li>
+                    </strong>
+                    <li class="list-group-item">{{university.address}}</li>
+                    <li class="list-group-item">{{university.city}}</li>
+                    <li class="list-group-item">{{university.ZipCode}}</li>
+                    <li class="list-group-item">{{university.phone}}</li>
+                    <li class="list-group-item">{{university.fax}}</li>
+                    <li class="list-group-item">{{university.mail}}</li>
+                    <li class="list-group-item">{{university.web}}</li>
+                    <button class="btn btn-danger" onclick="clearForm()" ng-click="deleteUniversity(university.name)">
+                            Delete
+                    </button>
+                    <br>
+                </ul>
+                
+            </div>
+         </div>
+
+
+        <div class="jumbotron">
+            <div class="container addModificate">
+                <strong>
+                    <h2>Add/Update University</h2><hr>
+                </strong>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                      <select class="form-control" ng-model="universityDataSelected" ng-change="getUniversityData(universityDataSelected.name)"
+                            data-ng-options="university as university.name for university in universities">
+                          <option value="university"  >{{university.name}}</option>
+                      </select>    
+                    </div>
+                </div>
+                
+                <form class="form-group col-md-4" id="addUni" name="universityForm" >
+                  
+                
+                  <label for="uni">Name:</label>
+                  <input type="text" class="form-control" id="uni" name="uni" ng-value="{{newUniversity.name}}" ng-model="newUniversity.name" ng-class="{'is-invalid': !universityForm.uni.$valid}" required/>
+                  
+                  <label for="addr">Address:</label>
+                  <input type="text" class="form-control" id="addr" name="addr" ng-model="newUniversity.address" ng-class="{'is-invalid': !universityForm.addr.$valid}" required>
+                  
+                  <label for="city">City:</label>
+                  <input type="text" class="form-control" id="city" name="city" ng-model="newUniversity.city" ng-class="{'is-invalid': !universityForm.city.$valid}" required> 
+                  
+                  <label for="zc">Zip Code:</label>
+                  <input type="text" class="form-control" id="zc" name="zipcode" ng-model="newUniversity.ZipCode" ng-class="{'is-invalid': !universityForm.zipcode.$valid}" required ng-pattern="/^[0-9]+$/">
+                  
+                  <label for="phone">Phone:</label>
+                  <input type="text" class="form-control" id="phone" name="phone" ng-model="newUniversity.phone" ng-class="{'is-invalid': !universityForm.phone.$valid}" required ng-pattern="/^[0-9]+$/">
+                  
+                  <label for="fax">Fax:</label>
+                  <input type="text" class="form-control" id="fax" name="fax" ng-model="newUniversity.fax" ng-class="{'is-invalid': !universityForm.fax.$valid}" required ng-pattern="/^[0-9]+$/">
+                  
+                  <label for="mail">Mail:</label>
+                  <input type="email" class="form-control" id="mail" name="mail" ng-model="newUniversity.mail" ng-class="{'is-invalid': !universityForm.mail.$valid}" required>
+                  
+                  <label for="web">Web:</label>
+                  <input type="url" class="form-control" id="web" name="web" ng-model="newUniversity.web" ng-class="{'is-invalid': !universityForm.web.$valid}" required>
+                  
+                  <br>
+                  <div class="row" >
+                      <div class="col-md-6">
+                          <button onclick="resetForm()" class="btn btn-primary" ng-disabled="!universityForm.$valid" ng-click="addUniversity()">Add University</button>
+                      </div>
+                      <div class="col-md-6">
+                          <button onclick="resetForm()" class="btn btn-primary" ng-disabled="!universityForm.$valid" ng-click="updateUniversity(newUniversity.name)">Update University</button>
+                      </div>
+                  </div>
+                </form>
+            </div>
     </div>
-    
-    
 </div>

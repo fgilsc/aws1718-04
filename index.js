@@ -8,6 +8,7 @@ var BASE_API_PATH = "/api/v1";
 var cors= require("cors");
 var request = require('request').defaults({json: true});
 var researchersResource = require('./researchersResource.js');
+var groupsResource = require('./groupsResource.js');
 
 
 var passport = require('passport');
@@ -18,14 +19,6 @@ var users = require('./users.js');
 var port = (process.env.PORT || 16778);
 
 var app = express();
-
-// Universities API params
-var baseAPIRes = "/api/v1";
-var serverURLRes = "https://aws1718-02.herokuapp.com";
-
-// Research Groups API params
-var baseAPIGr = "/api/v1";
-var serverURLGr = "https://aws1718-03.herokuapp.com";
 
 
 passport.use(new BasicStrategy(
@@ -150,39 +143,6 @@ app.get("/", (req, res) => {
 });
 
 
-
-
-
-app.get(BASE_API_PATH + "/researchers", (req, response) => {
-    console.log("GET /researchers"); 
-    
-    request.get(researchersResource("/researchers"), (error, resp, body) => {
-        if (error) {
-            console.log('error:'+error);
-            response.sendStatus(500);
-        } else {
-            response.send(body);
-        }
-    });
-});
-
-universities.connectDb((err) => {
-    if (err) {
-        console.log("Could not connect with MongoDB");
-        process.exit(1);
-    }
-     users.connectDb((err) => {
-        if (err) {
-            console.log("Could not connect with MongoDB users");
-            process.exit(1);
-        }
-        app.listen(port, () => {
-            console.log("Server with GUI up and running!!");
-        });   
-        
-    });
-});
-
 // Researcher routes
 app.get(BASE_API_PATH + "/researchers/:id", (req, res) => {
 	console.log("GET /researchers/" + req.params.id);
@@ -202,7 +162,7 @@ app.get(BASE_API_PATH + "/researchers/:id", (req, res) => {
       }*/
       
       
-	request.get(`${serverURLRes}${baseAPIRes}/researchers/${req.params.id}`, (err, resp, body) => {
+	request.get(researchersResource(`/researchers/${req.params.id}`), (err, resp, body) => {
 		if (err) {
 			console.log('Error: '+err);
 			res.sendStatus(500);
@@ -229,7 +189,7 @@ app.get(BASE_API_PATH + "/groups/:id", (req, res) => {
 	// 	lineresearch: "REST APIs",
 	// 	_id: "OeZgEeTAh4BfJD3l"
 	// 	});
-	request.get(`${serverURLGr}${baseAPIGr}/groups/${req.params.id}`, (err, resp, body) => {
+	request.get(groupsResource(`/groups/${req.params.id}`), (err, resp, body) => {
 		if (err) {
 			console.log('Error: '+err);
 			res.sendStatus(500);
@@ -238,4 +198,22 @@ app.get(BASE_API_PATH + "/groups/:id", (req, res) => {
 			res.status(resp.statusCode).send(body);
 		}
 	});
+});
+
+
+universities.connectDb((err) => {
+    if (err) {
+        console.log("Could not connect with MongoDB");
+        process.exit(1);
+    }
+     users.connectDb((err) => {
+        if (err) {
+            console.log("Could not connect with MongoDB users");
+            process.exit(1);
+        }
+        app.listen(port, () => {
+            console.log("Server with GUI up and running!!");
+        });   
+        
+    });
 });

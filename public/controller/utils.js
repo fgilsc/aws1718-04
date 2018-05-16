@@ -4,9 +4,6 @@ function resetForm() {
     document.getElementById("updateUni").reset();
 }
 
-/*function fillForUpdate(){
-    console.log("hello");
-}*/
 
 function ScrollToAddUniversity(){
     $('html,body').animate({

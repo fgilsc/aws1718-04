@@ -64,4 +64,22 @@ angular
         
         refresh();
         
+        $scope.getResearcher = function(id){
+            $http
+                .get("/api/v1/researchers/"+id, id)
+                .then(function (response){
+                    $scope.researcher = response.data;
+                });
+
+        };
+        
+        
+        $scope.getGroup = function(id){
+            $http
+                .get("/api/v1/groups/"+id, id)
+                .then(function (response){
+                    $scope.group = response.data;
+                });
+
+        };
     });
