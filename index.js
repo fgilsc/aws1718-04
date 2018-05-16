@@ -12,6 +12,7 @@ var researchersResource = require('./researchersResource.js');
 
 var passport = require('passport');
 var BasicStrategy = require('passport-http').BasicStrategy;
+var LocalAPIKey = require('passport-localapikey').Strategy;
 var users = require('./users.js');
 
 var port = (process.env.PORT || 16778);
@@ -30,6 +31,15 @@ passport.use(new BasicStrategy(
     }
 ));
 
+passport.use(new LocalAPIKey(
+    function(apikey, done) {
+        users.findOne({ apikey: apikey }, function (err, user) {
+          if (err) { return done(err); }
+          if (!user) { return done(null, false); }
+          return done(null, user);
+        });
+    }
+));
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -40,7 +50,7 @@ console.log("Starting API server...");
 
 
 app.get(BASE_API_PATH + "/universities", 
-    passport.authenticate('basic', {session:false}),
+    passport.authenticate(['basic','localapikey'], {session:false}), 
     (req, res) => {
     // Obtain all universities
     console.log(Date()+" - GET /universities");
