@@ -6,7 +6,7 @@ var db;
 var Universities = function () {}; 
 
 Universities.prototype.connectDb = function(callback){
-    MongoClient.connect(process.env.MONGODB_URL, function(err, database) {
+    MongoClient.connect('mongodb://aws:aws2018@ds219130.mlab.com:19130/aws1718-04', function(err, database) {
         if(err) {
             callback(err);
         }

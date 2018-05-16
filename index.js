@@ -10,19 +10,38 @@ var request = require('request').defaults({json: true});
 var researchersResource = require('./researchersResource.js');
 
 
+var passport = require('passport');
+var BasicStrategy = require('passport-http').BasicStrategy;
+var users = require('./users.js');
+
 var port = (process.env.PORT || 16778);
 
 var app = express();
 
 
+passport.use(new BasicStrategy(
+    function(username, password, done) {
+        users.findOne({ username: username }, function (err, user) {
+          if (err) { return done(err); }
+          if (!user) { return done(null, false); }
+          if (!user.validPassword(password)) { return done(null, false); }
+          return done(null, user);
+        });
+    }
+));
+
+
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
+app.use(passport.initialize());
 
 console.log("Starting API server...");
 
 
-app.get(BASE_API_PATH + "/universities", (req, res) => {
+app.get(BASE_API_PATH + "/universities", 
+    passport.authenticate('basic', {session:false}),
+    (req, res) => {
     // Obtain all universities
     console.log(Date()+" - GET /universities");
     
@@ -113,11 +132,7 @@ app.get("/", (req, res) => {
 });
 
 
-universities.connectDb((err) => {
-    if (err) {
-        console.log("Could not connect with MongoDB");
-        process.exit(1);
-    }
+
 
 
 app.get(BASE_API_PATH + "/researchers", (req, response) => {
@@ -133,7 +148,19 @@ app.get(BASE_API_PATH + "/researchers", (req, response) => {
     });
 });
 
-    app.listen(port, () => {
-        console.log("Server with GUI up and running!!");
-    });    
+universities.connectDb((err) => {
+    if (err) {
+        console.log("Could not connect with MongoDB");
+        process.exit(1);
+    }
+     users.connectDb((err) => {
+        if (err) {
+            console.log("Could not connect with MongoDB users");
+            process.exit(1);
+        }
+        app.listen(port, () => {
+            console.log("Server with GUI up and running!!");
+        });   
+        
+    });
 });
