@@ -23,6 +23,10 @@ var app = express();
 var baseAPIRes = "/api/v1";
 var serverURLRes = "https://aws1718-02.herokuapp.com";
 
+// Research Groups API params
+var baseAPIRes = "/api/v1";
+var serverURLRes = "https://aws1718-03.herokuapp.com";
+
 
 passport.use(new BasicStrategy(
     function(username, password, done) {
@@ -204,6 +208,33 @@ app.get(BASE_API_PATH + "/researchers/:id", (req, res) => {
 			res.sendStatus(500);
 		} else {
 			// body.researchGroups = ["1", "2"];
+			res.status(resp.statusCode).send(body);
+		}
+	});
+});
+
+// Research groups routes
+app.get(BASE_API_PATH + "/groups/:id", (req, res) => {
+	console.log("GET /groups/" + req.params.id);
+	// res.send({
+	// 	name: "ISA",
+	// 	id: "1",
+	// 	responsable: "Antonio Ruiz",
+	// 	email: "isagroup.us@gmail.com",
+	// 	components: [
+	// 		"Pablo Fernández",
+	// 		"Antonio Ruiz",
+	// 		"Manolo Resinas"
+	// 	],
+	// 	lineresearch: "REST APIs",
+	// 	_id: "OeZgEeTAh4BfJD3l"
+	// 	});
+	request.get(`${serverURLGr}${baseAPIGr}/groups/${req.params.id}`, (err, resp, body) => {
+		if (err) {
+			console.log('Error: '+err);
+			res.sendStatus(500);
+		} else {
+			// body[0].components = ["A","B"];
 			res.status(resp.statusCode).send(body);
 		}
 	});
