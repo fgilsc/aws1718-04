@@ -19,6 +19,10 @@ var port = (process.env.PORT || 16778);
 
 var app = express();
 
+// Universities API params
+var baseAPIRes = "/api/v1";
+var serverURLRes = "https://aws1718-02.herokuapp.com";
+
 
 passport.use(new BasicStrategy(
     function(username, password, done) {
@@ -173,4 +177,34 @@ universities.connectDb((err) => {
         });   
         
     });
+});
+
+// Researcher routes
+app.get(BASE_API_PATH + "/researchers/:id", (req, res) => {
+	console.log("GET /researchers/" + req.params.id);
+	/*{
+        "name": "Antonio Ruiz Cortes",
+        "phone": "954556874",
+        "mail": "aruiz@us.es",
+        "ORCID": "0000-0001-9827-1834",
+        "researcherID": "B-9056-2008",
+        "website": "https://scholar.google.es/citations?user=Ka-FHBQAAAAJ&hl=en",
+        "researchGroup": {
+          "name": "ISA",
+          "website": "http://www.isa.us.es"
+        },
+        "department": "LSI",
+        "university": "US"
+      }*/
+      
+      
+	request.get(`${serverURLRes}${baseAPIRes}/researchers/${req.params.id}`, (err, resp, body) => {
+		if (err) {
+			console.log('Error: '+err);
+			res.sendStatus(500);
+		} else {
+			// body.researchGroups = ["1", "2"];
+			res.status(resp.statusCode).send(body);
+		}
+	});
 });
