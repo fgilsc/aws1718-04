@@ -1,21 +1,21 @@
 {
-    name: "Universidad de Cádiz", 
-    address: "C/ Ancha 16",
-    city:"Cádiz",
-    ZipCode:"11001",
-    phone:"956019101",
-    fax:"956015049",
-    mail:"secretaria.general@uca.es",
-    web:"http://www.uca.es/",
-    groups: "Grupo 1" 
+    "name": "Universidad de Cádiz", 
+    "address": "C/ Ancha 16",
+    "city":"Cádiz",
+    "ZipCode":"11001",
+    "phone":"956019101",
+    "fax":"956015049",
+    "mail":"secretaria.general@uca.es",
+    "web":"http://www.uca.es/",
+    "groups": "Grupo 1" 
 }, {
-    name: "Universidad de Salamanca", 
-    address: "Cardenal Plá y Deniel, 22",
-    city:"Salamanca",
-    ZipCode:"37008",
-    phone:"923294400",
-    fax:"923294693",
-    mail:"informacion@usal.es",
-    web:"http://www.usal.es/",
-    groups: "Grupo 2"
+    "name": "Universidad de Salamanca", 
+    "address": "Cardenal Plá y Deniel, 22",
+    "city":"Salamanca",
+    "ZipCode":"37008",
+    "phone":"923294400",
+    "fax":"923294693",
+    "mail":"informacion@usal.es",
+    "web":"http://www.usal.es/",
+    "groups": "Grupo 2"
 }
