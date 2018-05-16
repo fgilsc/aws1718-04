@@ -24,8 +24,8 @@ var baseAPIRes = "/api/v1";
 var serverURLRes = "https://aws1718-02.herokuapp.com";
 
 // Research Groups API params
-var baseAPIRes = "/api/v1";
-var serverURLRes = "https://aws1718-03.herokuapp.com";
+var baseAPIGr = "/api/v1";
+var serverURLGr = "https://aws1718-03.herokuapp.com";
 
 
 passport.use(new BasicStrategy(
