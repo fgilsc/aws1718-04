@@ -6,7 +6,8 @@
     phone:"956019101",
     fax:"956015049",
     mail:"secretaria.general@uca.es",
-    web:"http://www.uca.es/" 
+    web:"http://www.uca.es/",
+    groups: "Grupo 1" 
 }, {
     name: "Universidad de Salamanca", 
     address: "Cardenal Plá y Deniel, 22",
@@ -15,5 +16,6 @@
     phone:"923294400",
     fax:"923294693",
     mail:"informacion@usal.es",
-    web:"http://www.usal.es/"
+    web:"http://www.usal.es/",
+    groups: "Grupo 2"
 }
