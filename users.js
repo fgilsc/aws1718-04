@@ -16,7 +16,7 @@ User.prototype.validPassword = function(password) {
 var Users = function () {};
 
 Users.prototype.connectDb = function(callback) {
-    MongoClient.connect('mongodb://aws:aws2018@ds219130.mlab.com:19130/aws1718-04', function(err, database) {
+    MongoClient.connect(process.env.MONGODB_URL, function(err, database) {
         if(err) {
             callback(err);
         }
