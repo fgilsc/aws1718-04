@@ -86,31 +86,28 @@ function listFiles(auth) {
   });
 }
 
-/**
- * Upload File
- * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
- */
-function uploadFile(authorization){
-    const driveAux = google.drive({version: 'v3', auth});
+function uploadFile(auth){
+    var drive = google.drive('v3');
     var fileMetadata = {
-        'name': 'picture.jpg'
-    };
+           'name': 'uploadImageTest.jpeg'
+        };
     var media = {
-        mimeType: 'image/jpeg',
-        body: fs.createReadStream('files/picture.jpg')
-    };
-    driveAux.files.create({
-        resource: fileMetadata,
-        media: media,
-        fields: 'id'
-    }, function (err, file) {
+            mimeType: 'image/jpeg',
+            //PATH OF THE FILE FROM YOUR COMPUTER
+            body: fs.createReadStream('/home/curro/AWS -…es/Taller-2/files/picture.jpeg')
+        };
+  
+        drive.files.create({
+            auth: auth,
+            resource: fileMetadata,
+            media: media,
+            fields: 'id'
+        }, function (err, file) {
         if (err) {
-        // Handle error
-        console.error(err);
+            // Handle error
+            console.error(err);
         } else {
-        console.log('File Id: ', file.id);
+            console.log('File Id: ', file.id);
         }
-    });
-}
-
-uploadFile;
+     });
+  }
