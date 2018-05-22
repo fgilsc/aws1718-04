@@ -2,7 +2,7 @@
 
 var MongoClient = require('mongodb').MongoClient;
 var db;
-
+var mongoUrl = process.env.MONGO_URL || 'mongodb://localhost:27017';
 var User = function(params) {
     this.username = params.username;
     this.email = params.email;
@@ -16,7 +16,7 @@ User.prototype.validPassword = function(password) {
 var Users = function () {};
 
 Users.prototype.connectDb = function(callback) {
-    MongoClient.connect(process.env.MONGODB_URL, function(err, database) {
+    MongoClient.connect(mongoUrl, function(err, database) {
         if(err) {
             callback(err);
         }
