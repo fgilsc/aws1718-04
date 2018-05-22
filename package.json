@@ -4,14 +4,15 @@
   "description": "Taller #1 de la asignatura AWS",
   "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "mongodb": "^3.0.8",
     "nedb": "^1.8.0",
+    "passport": "^0.4.0",
     "passport-http": "^0.3.0",
     "passport-localapikey": "0.0.3",
-    "request": "^2.86.0",
+    "request": "^2.87.0",
     "url-join": "^4.0.0"
   },
   "devDependencies": {

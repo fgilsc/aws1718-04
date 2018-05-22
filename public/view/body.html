@@ -24,7 +24,7 @@
                 <div >
                  <ul class="list-group" ng-repeat="university in universities">
                     <strong>
-                        <li class="list-group-item list-group-item-dark">{{university.name}}</li>
+                        <li id="universitySubmit" class="list-group-item list-group-item-dark universitySubmit" data-toggle="modal" data-target="#exampleModalCenter">{{university.name}}</li>
                     </strong>
                     <li class="list-group-item">{{university.address}}</li>
                     <li class="list-group-item">{{university.city}}</li>
@@ -37,6 +37,63 @@
                             Delete
                     </button>
                     <br>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">View on Google Maps</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                                <div id="map"></div>
+                                <script>
+                                  function initMap() {
+                                    var map = new google.maps.Map(document.getElementById('map'), {
+                                      zoom: 15,
+                                      //center: {lat: 37.261427977439226, lng: -5.827538250000089}
+                                    });
+                                    var geocoder = new google.maps.Geocoder();
+                                    
+                                    $('.universitySubmit').click(function() {
+                                      geocodeAddress(geocoder, map);
+                                    });
+                            
+                                    /*document.getElementById('universitySubmit').addEventListener('click', function() {
+                                      geocodeAddress(geocoder, map);
+                                    });*/
+                                  }
+                            
+                                  function geocodeAddress(geocoder, resultsMap) {
+                                    var address = $('.universitySubmit').html();
+                                    console.log(address)
+                                    geocoder.geocode({'address': address}, function(results, status) {
+                                      if (status === 'OK') {
+                                        resultsMap.setCenter(results[0].geometry.location);
+                                        var marker = new google.maps.Marker({
+                                          map: resultsMap,
+                                          position: results[0].geometry.location
+                                        });
+                                      } else {
+                                        alert('Geocode was not successful for the following reason: ' + status);
+                                      }
+                                    });
+                                  }
+                                </script>
+                                <script async defer
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2VUav0spheDMo5LWs21mpQVo_9EVeesg&callback=initMap">
+                                </script>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                 </ul>
                 
             </div>

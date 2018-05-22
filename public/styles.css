@@ -9,6 +9,12 @@ nav {
       color: white;
       padding: 15px;
     }
+    
+#map {
+  width: 100%;
+  height: 400px;
+  background-color: grey;
+}
 
 /* Para pantallas pequeñas */
 @media screen and (max-width: 767px) {
