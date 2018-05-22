@@ -11,7 +11,10 @@ fs.readFile('client_secret.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Drive API.
   authorize(JSON.parse(content), listFiles);
+  authorize(JSON.parse(content), uploadFile);
 });
+
+
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -30,6 +33,7 @@ function authorize(credentials, callback) {
     oAuth2Client.setCredentials(JSON.parse(token));
     callback(oAuth2Client);
   });
+
 }
 
 /**
@@ -86,6 +90,10 @@ function listFiles(auth) {
   });
 }
 
+/**
+ * Lists the names and IDs of up to 10 files.
+ * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+ */
 function uploadFile(auth){
     var drive = google.drive('v3');
     var fileMetadata = {
@@ -94,7 +102,7 @@ function uploadFile(auth){
     var media = {
             mimeType: 'image/jpeg',
             //PATH OF THE FILE FROM YOUR COMPUTER
-            body: fs.createReadStream('/home/curro/AWS -…es/Taller-2/files/picture.jpeg')
+            body: fs.createReadStream('./files/picture.jpg')
         };
   
         drive.files.create({
