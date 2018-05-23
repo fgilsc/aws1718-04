@@ -102,7 +102,7 @@ function uploadFile(auth){
     var media = {
             mimeType: 'image/jpeg',
             //PATH OF THE FILE FROM YOUR COMPUTER
-            body: fs.createReadStream('./files/picture.jpg')
+            body: fs.createReadStream('./files/researchers.json')
         };
   
         drive.files.create({
