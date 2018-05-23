@@ -18,7 +18,7 @@
                 <strong>
                     <h2>Manager</h2><hr>
                 </strong>
-                <button class="btn btn-secondary" onclick="ScrollToAddUniversity()">Add/Update University</button>
+                <button class="btn btn-primary" onclick="ScrollToAddUniversity()">Add/Update University</button>
                 <button value="submit" class="btn btn-danger" onclick="clearForm()" ng-click="deleteAllUniversities()">Delete All</button></br></br>
                 
                 <div >
@@ -37,8 +37,8 @@
                             Delete
                     </button>
                     <br>
-                    
-                    <!-- Modal -->
+                </ul>
+                <!-- Modal -->
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                       <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -51,24 +51,21 @@
                           <div class="modal-body">
                                 <div id="map"></div>
                                 <script>
+                                  var map;
+                                  var geocoder;
                                   function initMap() {
-                                    var map = new google.maps.Map(document.getElementById('map'), {
-                                      zoom: 15,
-                                      //center: {lat: 37.261427977439226, lng: -5.827538250000089}
-                                    });
-                                    var geocoder = new google.maps.Geocoder();
+                                        map = new google.maps.Map(document.getElementById('map'), {
+                                        zoom: 15,
+                                        });
+                                        geocoder = new google.maps.Geocoder();
                                     
                                     $('.universitySubmit').click(function() {
-                                      geocodeAddress(geocoder, map);
+                                      geocodeAddress(geocoder, map, $(this).text());
                                     });
-                            
-                                    /*document.getElementById('universitySubmit').addEventListener('click', function() {
-                                      geocodeAddress(geocoder, map);
-                                    });*/
                                   }
-                            
-                                  function geocodeAddress(geocoder, resultsMap) {
-                                    var address = $('.universitySubmit').html();
+
+                                  function geocodeAddress(geocoder, resultsMap, address) {
+                                    var address = address;//$('.universitySubmit').html();
                                     console.log(address)
                                     geocoder.geocode({'address': address}, function(results, status) {
                                       if (status === 'OK') {
@@ -94,7 +91,6 @@
                         </div>
                       </div>
                     </div>
-                </ul>
                 
             </div>
          </div>
